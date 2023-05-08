@@ -49,30 +49,65 @@ export const constantRoutes = [
     redirect: '/dashboard',
     children: [{
       path: 'dashboard',
-      name: 'Dashboard',
+      name: '首页',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '首页', icon: 'dashboard' }
     }]
   },
 
   {
-    path: '/example',
+    path: '/report',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    redirect: '/report/table',
+    name: 'report',
+    meta: { title: '报表', icon: 'el-icon-s-help' },
     children: [
       {
         path: 'table',
         name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        component: () => import('@/views/report/index'),
+        meta: { title: '礼物', icon: 'tree' }
       },
       {
         path: 'tree',
         name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        component: () => import('@/views/table/index'),
+        meta: { title: '充值', icon: 'tree' }
+      }
+    ]
+  },
+  {
+    path: '/config',
+    name: 'flyView',
+    meta: {
+      title: '配置',
+      icon: 'clipboard',
+      noCache: true
+    },
+    children: [
+      {
+        path: 'index',
+        name: 'Index',
+        component: () => import('@/views/config/index'),
+        meta: { title: '飞屏模版', icon: 'form' }
+      },
+      {
+        path: 'flyy',
+        name: 'Fly',
+        component: () => import('@/views/config/index'),
+        meta: { title: '飞屏模版', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/icon',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/icons/index'),
+        name: 'Icons',
+        meta: { title: '图标', icon: 'icon', noCache: true }
       }
     ]
   },
@@ -145,17 +180,6 @@ export const constantRoutes = [
         component: () => import('@/views/nested/menu2/index'),
         name: 'Menu2',
         meta: { title: 'menu2' }
-      }
-    ]
-  },
-
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
       }
     ]
   },
