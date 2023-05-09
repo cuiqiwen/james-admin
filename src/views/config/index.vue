@@ -66,7 +66,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="操作" min-width="180px">
+      <el-table-column align="center" label="操作" fixed="right" width="150px">
         <template slot-scope="scope">
           <el-row>
             <el-button size="mini" style="margin-bottom: 20px" type="primary" @click="editFlyTemplate(scope.row)">修改样式</el-button>
@@ -142,7 +142,8 @@
 import {
    listFlyTemplateAction,
    editFlyTemplateAction,
-   addFlyTemplateAction
+   addFlyTemplateAction,
+   testFlyTemplateAction
    } from '@/api/config'
 
 const defaultFormModel = {
@@ -236,7 +237,7 @@ export default {
       addFly(row) {
          addFlyTemplateAction(row).then(
             response => {
-              if(response && response.code === 'A00000'){
+              if(response && response.code === 20000){
                 this.listFlyTemplate()
                 this.closeForm()
                 this.$message({
@@ -260,7 +261,7 @@ export default {
       editFly(row) {
         editFlyTemplateAction(row).then(
             response => {
-              if(response && response.code === 'A00000'){
+              if(response && response.code === 20000){
                 this.listFlyTemplate()
                 this.closeForm()
                 this.$message({
@@ -315,7 +316,7 @@ export default {
         }
         testFlyTemplateAction(params).then(
               response => {
-                if(response && response.code === 'A00000'){
+                if(response && response.code === 20000){
                   this.$message({
                     type: 'success',
                     message: response.msg

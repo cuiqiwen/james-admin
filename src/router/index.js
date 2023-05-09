@@ -78,7 +78,9 @@ export const constantRoutes = [
   },
   {
     path: '/config',
-    name: 'flyView',
+    component: Layout,
+    redirect: '/config/index',
+    name: 'config',
     meta: {
       title: '配置',
       icon: 'clipboard',
